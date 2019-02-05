@@ -1,0 +1,16 @@
+<h1>Entry Form</h1>
+<p>Enter details below:</p>
+<form (ngSubmit)="addEntry()" method="post" oninput="temperatureF.value = temperatureC.value*9/5+32">
+  Insert a date:<br>
+  <input type="date" class="text" name="date" [(ngModel)]="dateFormatted"/><br>
+  Temperature (Celsius):<br>
+  <input type="text" class="text" name="temperatureC" placeholder="TemperatureC..." [(ngModel)]="temperatureC"><br>
+  Temperature (Fahrenheit):<br>
+  <output class="text" name="temperatureF" for="temperatureC" placeholder="TemperatureF..." ><br></output>
+  Description:<br>
+  <input type="text" class="text" name="description" placeholder="Description..." [(ngModel)]="Summary"><br>
+
+  <input type="submit" class="button" value="Submit">
+
+ 
+</form>

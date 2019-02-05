@@ -1,0 +1,25 @@
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+<p><b>Click an item to delete it from the database!</b></p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table' *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Temp. (C)</th>
+      <th>Temp. (F)</th>
+      <th>Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts; let i = index" (click)="removeItem(i)">
+      <td>{{ forecast.dateFormatted }}</td>
+      <td>{{ forecast.temperatureC }}</td>
+      <td>{{ forecast.temperatureF }}</td>
+      <td>{{ forecast.summary }}</td>
+    </tr>
+  </tbody>
+</table>
