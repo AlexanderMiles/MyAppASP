@@ -2,6 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 
+function Remove_Graphics_Item(i) {
+  if (i !== -1) {
+    this.forecasts.splice(i, 1);
+  }
+}
+
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html',
@@ -18,33 +24,13 @@ export class FetchDataComponent {
   }
 
   removeItem(i) {
-
-    console.log(i);
-    console.log(this.forecasts[i]);
-    console.log(this.forecasts[i].dateFormatted);
-
     this.http.delete(this.baseUrl + 'api/WeatherForecasts/' + this.forecasts[i].dateFormatted)
-
-      .subscribe(
-
-        data => {
-
-          console.log("Delete Request is successful ", data);
-
-        },
-
-        error => {
-
-          console.log("Error", error);
-
+       .subscribe(data => {console.log("Delete Request is successful ", data);},
+        error => {console.log("Error", error);
         }
-
     );
 
-    const identifer = this.forecasts.findIndex(e => e.dateFormatted === this.forecasts[i].dateFormatted) 
-    if (i !== -1) {
-      this.forecasts.splice(i, 1);
-    }
+    Remove_Graphics_Item(i)
   }
 }
 
